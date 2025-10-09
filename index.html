@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript in HTML - Complete Tutorial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #2575fc;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        h3 {
+            color: #6a11cb;
+            margin: 1rem 0 0.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .code-comment {
+            color: #75715e;
+        }
+        
+        .code-keyword {
+            color: #f92672;
+        }
+        
+        .code-function {
+            color: #66d9ef;
+        }
+        
+        .code-string {
+            color: #e6db74;
+        }
+        
+        .example-area {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        button {
+            background-color: #2575fc;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #1a68e8;
+        }
+        
+        .interactive-demo {
+            background-color: #f0f8ff;
+            border: 1px solid #cce5ff;
+            border-radius: 5px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .demo-result {
+            background-color: #e9ecef;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            min-height: 50px;
+        }
+        
+        input, select {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 0.5rem 0;
+            width: 100%;
+        }
+        
+        .note {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JavaScript in HTML</h1>
+            <p class="subtitle">A Comprehensive Tutorial with Interactive Examples</p>
+        </header>
+        
+        <div class="content-grid">
+            <div>
+                <!-- Section 1: Including JavaScript in HTML -->
+                <section class="section">
+                    <h2>1. Including JavaScript in HTML</h2>
+                    <p>JavaScript can be included in HTML documents in three ways:</p>
+                    
+                    <h3>Inline JavaScript</h3>
+                    <p>JavaScript code can be placed directly within HTML elements using event attributes.</p>
+                    <div class="code-block">
+                        &lt;button <span class="code-keyword">onclick</span>="alert('Hello World!')"&gt;Click Me&lt;/button&gt;
+                    </div>
+                    <div class="example-area">
+                        <button onclick="alert('Hello World!')">Click Me (Inline)</button>
+                    </div>
+                    
+                    <h3>Internal JavaScript</h3>
+                    <p>JavaScript code can be placed within <code>&lt;script&gt;</code> tags in the HTML document.</p>
+                    <div class="code-block">
+                        &lt;script&gt;<br>
+                        &nbsp;&nbsp;<span class="code-comment">// This is internal JavaScript</span><br>
+                        &nbsp;&nbsp;<span class="code-keyword">function</span> <span class="code-function">greet</span>() {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;alert(<span class="code-string">'Hello from internal JavaScript!'</span>);<br>
+                        &nbsp;&nbsp;}<br>
+                        &lt;/script&gt;
+                    </div>
+                    <div class="example-area">
+                        <button onclick="greet()">Click Me (Internal)</button>
+                    </div>
+                    
+                    <h3>External JavaScript</h3>
+                    <p>JavaScript code can be placed in a separate file and linked to the HTML document.</p>
+                    <div class="code-block">
+                        &lt;script src="script.js"&gt;&lt;/script&gt;
+                    </div>
+                    <div class="note">
+                        <p><strong>Best Practice:</strong> For better organization and performance, use external JavaScript files.</p>
+                    </div>
+                </section>
+                
+                <!-- Section 2: DOM Manipulation -->
+                <section class="section">
+                    <h2>2. DOM Manipulation</h2>
+                    <p>The Document Object Model (DOM) represents the structure of an HTML document. JavaScript can manipulate the DOM to change content, styles, and structure.</p>
+                    
+                    <h3>Selecting Elements</h3>
+                    <div class="code-block">
+                        <span class="code-comment">// Select by ID</span><br>
+                        <span class="code-keyword">let</span> element = document.<span class="code-function">getElementById</span>(<span class="code-string">'myId'</span>);<br><br>
+                        
+                        <span class="code-comment">// Select by class name</span><br>
+                        <span class="code-keyword">let</span> elements = document.<span class="code-function">getElementsByClassName</span>(<span class="code-string">'myClass'</span>);<br><br>
+                        
+                        <span class="code-comment">// Select by tag name</span><br>
+                        <span class="code-keyword">let</span> elements = document.<span class="code-function">getElementsByTagName</span>(<span class="code-string">'div'</span>);<br><br>
+                        
+                        <span class="code-comment">// Modern selectors (similar to CSS)</span><br>
+                        <span class="code-keyword">let</span> element = document.<span class="code-function">querySelector</span>(<span class="code-string">'#myId'</span>);<br>
+                        <span class="code-keyword">let</span> elements = document.<span class="code-function">querySelectorAll</span>(<span class="code-string">'.myClass'</span>);
+                    </div>
+                    
+                    <h3>Changing Content and Styles</h3>
+                    <div class="interactive-demo">
+                        <p id="demo-text">This text will change when you click the button.</p>
+                        <button onclick="changeText()">Change Text</button>
+                        <button onclick="changeColor()">Change Color</button>
+                        <button onclick="resetDemo()">Reset</button>
+                    </div>
+                </section>
+                
+                <!-- Section 3: Event Handling -->
+                <section class="section">
+                    <h2>3. Event Handling</h2>
+                    <p>JavaScript can respond to user interactions through events.</p>
+                    
+                    <h3>Common Events</h3>
+                    <ul>
+                        <li><code>click</code> - When an element is clicked</li>
+                        <li><code>mouseover</code> - When mouse pointer moves over an element</li>
+                        <li><code>mouseout</code> - When mouse pointer moves out of an element</li>
+                        <li><code>keydown</code> - When a key is pressed down</li>
+                        <li><code>load</code> - When the page has finished loading</li>
+                    </ul>
+                    
+                    <h3>Event Listeners</h3>
+                    <div class="code-block">
+                        <span class="code-comment">// Adding an event listener</span><br>
+                        document.<span class="code-function">getElementById</span>(<span class="code-string">'myButton'</span>).<span class="code-function">addEventListener</span>(<span class="code-string">'click'</span>, <span class="code-keyword">function</span>() {<br>
+                        &nbsp;&nbsp;console.<span class="code-function">log</span>(<span class="code-string">'Button clicked!'</span>);<br>
+                        });
+                    </div>
+                    
+                    <div class="interactive-demo">
+                        <p id="event-demo">Hover over this text or click the button.</p>
+                        <button id="event-button">Click Me</button>
+                        <div class="demo-result" id="event-result"></div>
+                    </div>
+                </section>
+            </div>
+            
+            <div>
+                <!-- Section 4: Variables and Data Types -->
+                <section class="section">
+                    <h2>4. Variables and Data Types</h2>
+                    <p>JavaScript variables can hold different types of data.</p>
+                    
+                    <h3>Variable Declaration</h3>
+                    <div class="code-block">
+                        <span class="code-comment">// Using var (older way, function-scoped)</span><br>
+                        <span class="code-keyword">var</span> name = <span class="code-string">"John"</span>;<br><br>
+                        
+                        <span class="code-comment">// Using let (modern, block-scoped)</span><br>
+                        <span class="code-keyword">let</span> age = 25;<br><br>
+                        
+                        <span class="code-comment">// Using const (for constants, cannot be reassigned)</span><br>
+                        <span class="code-keyword">const</span> PI = 3.14159;
+                    </div>
+                    
+                    <h3>Data Types</h3>
+                    <div class="code-block">
+                        <span class="code-comment">// String</span><br>
+                        <span class="code-keyword">let</span> message = <span class="code-string">"Hello World"</span>;<br><br>
+                        
+                        <span class="code-comment">// Number</span><br>
+                        <span class="code-keyword">let</span> count = 42;<br><br>
+                        
+                        <span class="code-comment">// Boolean</span><br>
+                        <span class="code-keyword">let</span> isActive = <span class="code-keyword">true</span>;<br><br>
+                        
+                        <span class="code-comment">// Array</span><br>
+                        <span class="code-keyword">let</span> colors = [<span class="code-string">"red"</span>, <span class="code-string">"green"</span>, <span class="code-string">"blue"</span>];<br><br>
+                        
+                        <span class="code-comment">// Object</span><br>
+                        <span class="code-keyword">let</span> person = {<br>
+                        &nbsp;&nbsp;name: <span class="code-string">"Alice"</span>,<br>
+                        &nbsp;&nbsp;age: 30,<br>
+                        &nbsp;&nbsp;isStudent: <span class="code-keyword">false</span><br>
+                        };
+                    </div>
+                    
+                    <div class="interactive-demo">
+                        <h3>Data Type Demo</h3>
+                        <button onclick="showDataTypes()">Show Data Types</button>
+                        <div class="demo-result" id="data-types-result"></div>
+                    </div>
+                </section>
+                
+                <!-- Section 5: Functions -->
+                <section class="section">
+                    <h2>5. Functions</h2>
+                    <p>Functions are reusable blocks of code that perform a specific task.</p>
+                    
+                    <h3>Function Declaration</h3>
+                    <div class="code-block">
+                        <span class="code-comment">// Function declaration</span><br>
+                        <span class="code-keyword">function</span> <span class="code-function">greet</span>(name) {<br>
+                        &nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">"Hello, "</span> + name + <span class="code-string">"!"</span>;<br>
+                        }<br><br>
+                        
+                        <span class="code-comment">// Function expression</span><br>
+                        <span class="code-keyword">const</span> multiply = <span class="code-keyword">function</span>(a, b) {<br>
+                        &nbsp;&nbsp;<span class="code-keyword">return</span> a * b;<br>
+                        };<br><br>
+                        
+                        <span class="code-comment">// Arrow function (ES6)</span><br>
+                        <span class="code-keyword">const</span> divide = (a, b) => a / b;
+                    </div>
+                    
+                    <div class="interactive-demo">
+                        <h3>Function Calculator</h3>
+                        <input type="number" id="num1" placeholder="Enter first number">
+                        <input type="number" id="num2" placeholder="Enter second number">
+                        <button onclick="calculate('add')">Add</button>
+                        <button onclick="calculate('subtract')">Subtract</button>
+                        <button onclick="calculate('multiply')">Multiply</button>
+                        <button onclick="calculate('divide')">Divide</button>
+                        <div class="demo-result" id="calculator-result"></div>
+                    </div>
+                </section>
+                
+                <!-- Section 6: Conditional Statements -->
+                <section class="section">
+                    <h2>6. Conditional Statements</h2>
+                    <p>Conditional statements allow your code to make decisions.</p>
+                    
+                    <h3>If-Else Statement</h3>
+                    <div class="code-block">
+                        <span class="code-keyword">let</span> temperature = 25;<br><br>
+                        
+                        <span class="code-keyword">if</span> (temperature > 30) {<br>
+                        &nbsp;&nbsp;console.<span class="code-function">log</span>(<span class="code-string">"It's hot outside!"</span>);<br>
+                        } <span class="code-keyword">else if</span> (temperature > 20) {<br>
+                        &nbsp;&nbsp;console.<span class="code-function">log</span>(<span class="code-string">"The weather is pleasant."</span>);<br>
+                        } <span class="code-keyword">else</span> {<br>
+                        &nbsp;&nbsp;console.<span class="code-function">log</span>(<span class="code-string">"It's cold outside!"</span>);<br>
+                        }
+                    </div>
+                    
+                    <h3>Switch Statement</h3>
+                    <div class="code-block">
+                        <span class="code-keyword">let</span> day = <span class="code-string">"Monday"</span>;<br><br>
+                        
+                        <span class="code-keyword">switch</span>(day) {<br>
+                        &nbsp;&nbsp;<span class="code-keyword">case</span> <span class="code-string">"Monday"</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;console.<span class="code-function">log</span>(<span class="code-string">"Start of the work week"</span>);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">break</span>;<br>
+                        &nbsp;&nbsp;<span class="code-keyword">case</span> <span class="code-string">"Friday"</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;console.<span class="code-function">log</span>(<span class="code-string">"Weekend is almost here!"</span>);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">break</span>;<br>
+                        &nbsp;&nbsp;<span class="code-keyword">default</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;console.<span class="code-function">log</span>(<span class="code-string">"It's a regular day"</span>);<br>
+                        }
+                    </div>
+                    
+                    <div class="interactive-demo">
+                        <h3>Conditional Demo</h3>
+                        <input type="number" id="temperature" placeholder="Enter temperature">
+                        <button onclick="checkTemperature()">Check Temperature</button>
+                        <div class="demo-result" id="temperature-result"></div>
+                    </div>
+                </section>
+                
+                <!-- Section 7: Loops -->
+                <section class="section">
+                    <h2>7. Loops</h2>
+                    <p>Loops allow you to execute a block of code multiple times.</p>
+                    
+                    <h3>For Loop</h3>
+                    <div class="code-block">
+                        <span class="code-comment">// Print numbers from 1 to 5</span><br>
+                        <span class="code-keyword">for</span> (<span class="code-keyword">let</span> i = 1; i <= 5; i++) {<br>
+                        &nbsp;&nbsp;console.<span class="code-function">log</span>(i);<br>
+                        }
+                    </div>
+                    
+                    <h3>While Loop</h3>
+                    <div class="code-block">
+                        <span class="code-comment">// Print numbers from 1 to 5</span><br>
+                        <span class="code-keyword">let</span> i = 1;<br>
+                        <span class="code-keyword">while</span> (i <= 5) {<br>
+                        &nbsp;&nbsp;console.<span class="code-function">log</span>(i);<br>
+                        &nbsp;&nbsp;i++;<br>
+                        }
+                    </div>
+                    
+                    <div class="interactive-demo">
+                        <h3>Loop Demo</h3>
+                        <button onclick="runForLoop()">Run For Loop</button>
+                        <button onclick="runWhileLoop()">Run While Loop</button>
+                        <div class="demo-result" id="loop-result"></div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <footer>
+            <p>JavaScript in HTML Tutorial &copy; 2023 | Practice these concepts to master JavaScript!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Section 2: DOM Manipulation Functions
+        function changeText() {
+            document.getElementById('demo-text').textContent = 'The text has been changed!';
+        }
+        
+        function changeColor() {
+            const colors = ['#ff6b6b', '#48dbfb', '#1dd1a1', '#feca57', '#ff9ff3'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById('demo-text').style.color = randomColor;
+        }
+        
+        function resetDemo() {
+            document.getElementById('demo-text').textContent = 'This text will change when you click the button.';
+            document.getElementById('demo-text').style.color = '#333';
+        }
+        
+        // Section 3: Event Handling
+        document.getElementById('event-button').addEventListener('click', function() {
+            document.getElementById('event-result').textContent = 'Button was clicked!';
+        });
+        
+        document.getElementById('event-demo').addEventListener('mouseover', function() {
+            document.getElementById('event-result').textContent = 'Mouse is over the text!';
+        });
+        
+        document.getElementById('event-demo').addEventListener('mouseout', function() {
+            document.getElementById('event-result').textContent = 'Mouse left the text!';
+        });
+        
+        // Section 4: Data Types
+        function showDataTypes() {
+            const result = document.getElementById('data-types-result');
+            
+            // Create different data types
+            const stringVar = "Hello, World!";
+            const numberVar = 42;
+            const booleanVar = true;
+            const arrayVar = ["Apple", "Banana", "Cherry"];
+            const objectVar = {
+                name: "John Doe",
+                age: 30,
+                profession: "Developer"
+            };
+            
+            // Display the data types and their values
+            result.innerHTML = `
+                <p><strong>String:</strong> ${stringVar} (Type: ${typeof stringVar})</p>
+                <p><strong>Number:</strong> ${numberVar} (Type: ${typeof numberVar})</p>
+                <p><strong>Boolean:</strong> ${booleanVar} (Type: ${typeof booleanVar})</p>
+                <p><strong>Array:</strong> ${arrayVar.join(', ')} (Type: ${typeof arrayVar})</p>
+                <p><strong>Object:</strong> ${JSON.stringify(objectVar)} (Type: ${typeof objectVar})</p>
+            `;
+        }
+        
+        // Section 5: Functions
+        function calculate(operation) {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const resultElement = document.getElementById('calculator-result');
+            
+            if (isNaN(num1) || isNaN(num2)) {
+                resultElement.textContent = 'Please enter valid numbers';
+                return;
+            }
+            
+            let result;
+            switch(operation) {
+                case 'add':
+                    result = num1 + num2;
+                    resultElement.textContent = `${num1} + ${num2} = ${result}`;
+                    break;
+                case 'subtract':
+                    result = num1 - num2;
+                    resultElement.textContent = `${num1} - ${num2} = ${result}`;
+                    break;
+                case 'multiply':
+                    result = num1 * num2;
+                    resultElement.textContent = `${num1} × ${num2} = ${result}`;
+                    break;
+                case 'divide':
+                    if (num2 === 0) {
+                        resultElement.textContent = 'Cannot divide by zero';
+                    } else {
+                        result = num1 / num2;
+                        resultElement.textContent = `${num1} ÷ ${num2} = ${result}`;
+                    }
+                    break;
+            }
+        }
+        
+        // Section 6: Conditional Statements
+        function checkTemperature() {
+            const temperature = parseFloat(document.getElementById('temperature').value);
+            const resultElement = document.getElementById('temperature-result');
+            
+            if (isNaN(temperature)) {
+                resultElement.textContent = 'Please enter a valid temperature';
+                return;
+            }
+            
+            if (temperature > 35) {
+                resultElement.textContent = `At ${temperature}°C, it's very hot! Stay hydrated.`;
+                resultElement.style.color = '#e74c3c';
+            } else if (temperature > 25) {
+                resultElement.textContent = `At ${temperature}°C, it's warm. Perfect for outdoor activities.`;
+                resultElement.style.color = '#e67e22';
+            } else if (temperature > 15) {
+                resultElement.textContent = `At ${temperature}°C, the weather is pleasant.`;
+                resultElement.style.color = '#2ecc71';
+            } else if (temperature > 5) {
+                resultElement.textContent = `At ${temperature}°C, it's cool. You might need a jacket.`;
+                resultElement.style.color = '#3498db';
+            } else {
+                resultElement.textContent = `At ${temperature}°C, it's cold! Bundle up.`;
+                resultElement.style.color = '#9b59b6';
+            }
+        }
+        
+        // Section 7: Loops
+        function runForLoop() {
+            const resultElement = document.getElementById('loop-result');
+            let output = 'For Loop Results:<br>';
+            
+            for (let i = 1; i <= 5; i++) {
+                output += `Iteration ${i}<br>`;
+            }
+            
+            resultElement.innerHTML = output;
+        }
+        
+        function runWhileLoop() {
+            const resultElement = document.getElementById('loop-result');
+            let output = 'While Loop Results:<br>';
+            let i = 1;
+            
+            while (i <= 5) {
+                output += `Iteration ${i}<br>`;
+                i++;
+            }
+            
+            resultElement.innerHTML = output;
+        }
+        
+        // Internal JavaScript function
+        function greet() {
+            alert('Hello from internal JavaScript!');
+        }
+    </script>
+</body>
+</html>id=""
